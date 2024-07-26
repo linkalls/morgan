@@ -9,8 +9,8 @@ app.use((req, res, next) => {
   next()
 }) 
 
-app.use("/",(req,res,next)=>{
-  console.log("root!!!!!")
+app.use("/f",(req,res,next)=>{
+  console.log("f!!!!!")
   next()
 })
 
@@ -19,9 +19,8 @@ app.get("/", (req, res) => {
   res.send(`<h1>リクエスト時刻: ${req.requestTime}</h1>`)
 })
 
-app.use((req,res,next)=>{
-  console.log("これからredirectすんで")
-  res.redirect("/")
+app.use((req,res)=>{
+  res.status(404).send("<h1>not found</h1>")
 })
 
 app.listen(3001, () => {
