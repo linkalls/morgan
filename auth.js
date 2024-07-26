@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 
 
-app.use("/secrets",(req,res,next)=>{ //* secretだけ
+const verifyPassword = ("/secrets",(req,res,next)=>{ //* 関数式に変えちゃう
   console.log(req.query)
   const {password} = req.query
   if(password === "supersecret") {
@@ -17,9 +17,9 @@ app.get("/", (req, res) => {
   res.send(`<h1>リクエスト時刻: ${req.requestTime}</h1>`)
 })
 
-app.get("/secrets",(req,res)=>{
+app.get("/secrets",verifyPassword,(req,res)=>{ //* next()がさすのがverifyPasswordの後ろだから前に書かなきゃダメ
   res.send("<h1>this is a secret page!</h1>")
-})
+},) //* コールバック関数無限
 
 app.use((req,res)=>{
   res.status(404).send("<h1>not found</h1>")
