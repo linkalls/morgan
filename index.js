@@ -3,7 +3,10 @@ const app = express()
 const morgan = require("morgan")
 
 
-app.use(morgan("tiny"))//* すべてのリクエストでapp.use内のコールバック関数は実行される
+// app.use(morgan("tiny"))
+app.use(morgan("dev"))
+app.use(morgan("common"))//* 色が出る
+//* すべてのリクエストでapp.use内のコールバック関数は実行される 間に入れた(reqとresの)
 //* GET /dogs 304 - - 2.507 ms
 //* GET /w2d2cf3vg 404 148 - 2.180 ms
 
