@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   //* すべてで実行　この処理の後にnext()を実行 (次の関数を実行)
   console.log("初めてのミドルウェア")
   next() //* 呼ばなかったらずっとぐるぐる
-  console.log("nextを読んだ後") //* next()が終わった後にここも実行されちゃう これをふせぐなら
+  console.log("nextを読んだ後") //* next()が終わった後にここも実行されちゃう これをふせぐならnext()のとこでreturn
 })
 
 app.use((req, res, next) => {
