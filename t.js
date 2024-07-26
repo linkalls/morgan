@@ -3,6 +3,7 @@ const app = express()
 const morgan = require("morgan")
 
 app.use((req, res, next) => {
+  req.method = "get" //* 全部書き換えられちゃう 動作としてもgetになっちゃう
   console.log(req.method, req.path) //* GET /
   next()
 })
